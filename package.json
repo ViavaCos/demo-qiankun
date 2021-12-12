@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "init": "npm-run-all --parallel init:* && npm run child-link",
+    "init:new": "cd new-ver && npm link",
+    "init:old": "cd old-ver && npm link",
+    "child-link": "cd child-a && npm link new-ver && npm link old-ver",
     "install": "npm-run-all install:*",
     "install:main": "cd main/ && npm install",
     "install:child": "cd child-a/ && npm install",
@@ -16,7 +20,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "element-ui": "^2.15.6",
     "qiankun": "^2.5.1"
   },
   "devDependencies": {
